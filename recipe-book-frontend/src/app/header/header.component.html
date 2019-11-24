@@ -1,0 +1,47 @@
+<nav class="navbar is-transparent" role="naviigation" aria-label="main navigation" style="padding-bottom: 10px;">
+    <div class="container">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="/">
+                <strong>RECIPE BOOK</strong>
+            </a>
+            <a class="navbar-burger burger" role="button" aria-expanded="true" aria-label="menu" data-target="navMenu">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+
+        <div class="navbar-menu" id="navMenu">
+            <div class="navbar-start">
+                <div class="tabs is-boxed is-fullwidth">
+                    <ul>
+                        <li [class.is-active]="onrecipe" (click)="onSelect('recipes')">
+                            <a>
+                                <span class="icon is-small"><i class="fas fa-image" aria-hidden="true"></i></span>
+                                <span>Recipes</span>
+                            </a>
+                        </li>
+                        <li [class.is-active]="onIngre">
+                            <a>
+                                <span class="icon is-small"><i class="fas fa-music" aria-hidden="true"></i></span>
+                                <span>Ingredient</span>
+                            </a>
+                        </li>
+                        <li [class.is-active]="onList" (click)="onSelect('shopping-list')">
+                            <a>
+                                <span class="icon is-small"><i class="fas fa-film" aria-hidden="true"></i></span>
+                                <span>Shopping List</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="navbar-end">
+                <div class="navbar-item">
+                    <a class="button is-primary is-outlined is-rounded" routerLink="" routerLinkActive="active">Say
+                        Hello</a> </div>
+            </div>
+        </div>
+    </div>
+</nav>

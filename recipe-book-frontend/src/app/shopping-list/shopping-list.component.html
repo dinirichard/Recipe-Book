@@ -1,0 +1,14 @@
+<div class="columns">
+    <div class="column is-one-quarter is-narrow">
+        <app-shopping-edit (ingredientAdded)="onIngredientAdd($event)"></app-shopping-edit>
+        <mat-list>
+            <h3 mat-subheader>Ingredients</h3>
+            <mat-list-item *ngFor="let ingredient of ingredients">
+                <mat-icon mat-list-icon>shopping_cart</mat-icon>
+                <h4 mat-line>{{ingredient.name}}</h4>
+                <p mat-line> {{ingredient.amount }} </p>
+                <mat-divider></mat-divider>
+            </mat-list-item>
+        </mat-list>
+    </div>
+</div>

@@ -1,0 +1,7 @@
+<app-header (optionSelected)="onNavigation($event)"></app-header>
+<div>
+    <app-recipe *ngIf="optionLoaded === 'recipes'"></app-recipe>
+    <app-shopping-list *ngIf="optionLoaded !== 'recipes'"></app-shopping-list>
+
+</div>
+<router-outlet></router-outlet>

@@ -1,0 +1,46 @@
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+# compiled output
+/recipe-book-frontend/dist
+/recipe-book-frontend/tmp
+/recipe-book-frontend/out-tsc
+# Only exists if Bazel was run
+/recipe-book-frontend/bazel-out
+
+# dependencies
+/recipe-book-frontend/node_modules
+
+# profiling files
+chrome-profiler-events*.json
+speed-measure-plugin*.json
+
+# IDEs and editors
+/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.history/*
+
+# misc
+/recipe-book-frontend/.sass-cache
+/recipe-book-frontend/connect.lock
+/recipe-book-frontend/coverage
+/recipe-book-frontend/libpeerconnection.log
+npm-debug.log
+yarn-error.log
+testem.log
+/recipe-book-frontend/typings
+
+# System Files
+.DS_Store
+Thumbs.db

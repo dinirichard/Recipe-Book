@@ -1,0 +1,59 @@
+package dinirichard.recipe.controller;
+
+import dinirichard.recipe.db.IngredientRepository;
+import dinirichard.recipe.domain.IngredientViewModel;
+import dinirichard.recipe.service.IngredientService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
+
+import javax.validation.ValidationException;
+import java.util.List;
+
+@RestController
+@RequestMapping("/api/ingredients")
+@CrossOrigin
+public class IngredientController {
+
+    @Autowired
+    private IngredientService ingredientService;
+    @Autowired
+    private IngredientRepository ingredientRepository;
+
+
+    @GetMapping("/all")
+    public List<IngredientViewModel> all() {
+        return ingredientService.getAllIngredients();
+    }
+
+    @GetMapping("/byId/{id}")
+    public IngredientViewModel byId(@PathVariable("id") Integer id) {
+
+        return ingredientService.getIngredientById(id);
+    }
+
+    @GetMapping("/byRecipe/{ingredientId}")
+    public List<IngredientViewModel> byNotebook(@PathVariable("ingredientId") Integer ingredientId) {
+
+        return ingredientService.byRecipeId(ingredientId);
+    }
+
+    @PostMapping
+    public IngredientViewModel save(@RequestBody IngredientViewModel IngredientViewModel, BindingResult bindingResult) {
+
+        if (bindingResult.hasErrors()) {
+            throw new ValidationException();
+        }
+
+        if(IngredientViewModel.getId() != 0){
+            return ingredientService.updateIngredient(IngredientViewModel) ;
+        }
+
+        return ingredientService.save(IngredientViewModel);
+    }
+
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable Integer id) {
+        this.ingredientRepository.deleteById(id);
+    }
+}
