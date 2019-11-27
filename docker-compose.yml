@@ -34,22 +34,21 @@ services:
     depends_on:
       - database
     volumes:
-      - ./recipe-book/target/docker-recipe-book-api.jar:/application.jar
+      - ./recipe-book/target/docker-recipe-book-api.jar:application.jar
     command: ["java", "-jar", "application.jar"]
     networks:
       - backend
       - frontend
 
   angular:
-    image: nginx:alpine
-    container_name: angular
-    ports:
-      - 4200:80
+    container_name: recipe-ang
+    build:
+      context: ./recipe-book-frontend
+      dockerfile: Dockerfile
     depends_on:
       - springapi
-    volumes:
-      - ./recipe-book-frontend/dist/recipe-book-frontend/:/usr/share/nginx/html
-      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+    ports:
+      - '80:80'
     networks:
       - frontend
 
