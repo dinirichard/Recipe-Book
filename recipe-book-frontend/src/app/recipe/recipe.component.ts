@@ -10,6 +10,7 @@ export class RecipeComponent implements OnInit {
 
   recipe: Recipe;
   constructor() { }
+  detailDeleted: Recipe;
 
   ngOnInit() {
   }
@@ -19,5 +20,7 @@ export class RecipeComponent implements OnInit {
     this.recipe = rec;
     console.log("Arrived2");
   }
+
+  
 
 }

@@ -1,4 +1,5 @@
 import { Component, EventEmitter } from '@angular/core';
+import { Recipe } from './shared/models/recipe';
 
 @Component({
   selector: 'app-root',
@@ -19,6 +20,10 @@ export class AppComponent {
     console.log("Arrived2");
 
   }
+
+  // afterDeletion(detail: Recipe){
+    
+  // }
 
 
 }

@@ -1,0 +1,59 @@
+version: '3'
+
+volumes:
+  dockerRecipeBookData:
+    driver: local
+
+networks:
+  backend:
+    driver: bridge
+  frontend:
+    driver: bridge
+
+services:
+  database:
+    image: mysql
+    container_name: database
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: dockerRecipeBookDatabase
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
+    ports:
+      - 3306:3306
+    volumes:
+      - dockerRecipeBookDatabase
+    networks:
+      - backend
+
+  springapi:
+    image: openjdk:11-jre-slim
+    container_name: springapi
+    ports:
+      - 8085:8085
+    depends_on:
+      - database
+    volumes:
+      - ./recipe-book/target/docker-recipe-book-api.jar:/application.jar
+    command: ["java", "-jar", "application.jar"]
+    networks:
+      - backend
+      - frontend
+
+  angular:
+    image: nginx:alpine
+    container_name: angular
+    ports:
+      - 4200:80
+    depends_on:
+      - springapi
+    volumes:
+      - ./recipe-book-frontend/dist/recipe-book-frontend/:/usr/share/nginx/html
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+    networks:
+      - frontend
+
+
+
+
+
