@@ -11,7 +11,6 @@ import { Location } from "@angular/common";
 })
 export class RecipeDetailComponent implements OnInit {
 
-  recipes: Recipe[] = [];
   @Input() recipeDetail: Recipe;
   @Output() deletedDetail = new EventEmitter<Recipe>();
   constructor(private apiService: ApiRecipeService, private router: Router, private location: Location) { }
