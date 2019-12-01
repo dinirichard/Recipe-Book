@@ -1,0 +1,20 @@
+<mat-card class="tocook-card">
+    <mat-card-header>
+        <mat-card-title>To cook list</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <mat-list>
+            <mat-list-item *ngFor="let tocook of cookingList">
+                <mat-icon mat-list-icon>outdoor_grill</mat-icon>
+                <h4 mat-line>{{tocook.recipe_name}}</h4>
+                <p mat-line>{{ tocook.cook_date| date }}</p>
+                <mat-form-field visibility="hidden">
+                    <input matInput [matDatepicker]="picker1" placeholder="Angular forms" [formControl]="get.date">
+                    <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                    <mat-datepicker #picker1></mat-datepicker>
+                </mat-form-field>
+                <mat-divider></mat-divider>
+            </mat-list-item>
+        </mat-list>
+    </mat-card-content>
+</mat-card>

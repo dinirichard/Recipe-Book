@@ -19,10 +19,10 @@ public class Recipe {
     @Column
     private String image;
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
     @JoinTable(name="recipe_ingredients",
-            joinColumns=@JoinColumn(name="recipe_id", referencedColumnName = "id"),
-            inverseJoinColumns=@JoinColumn(name="ingredient_id", referencedColumnName = "id"))
+            joinColumns=@JoinColumn(name="recipe_id"),
+            inverseJoinColumns=@JoinColumn(name="ingredient_id"))
     private List<Ingredient> ingredients;
 
     protected Recipe(){

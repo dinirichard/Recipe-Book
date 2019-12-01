@@ -1,0 +1,2 @@
+INSERT INTO recipe_book.recipe (id, name, description, image) VALUES (1, 'Steak', 'Using this recipe you can prepare a very tasty and pleasantly looking steak.', 'https://moodysbutchershop.com/wp-content/uploads/2017/09/Ribeye-on-Platter.jpg');
+INSERT INTO recipe_book.recipe (id, name, description, image) VALUES (2, 'White soup', 'Akwa-Ibom native soup for eating along side pounded yam.', 'https://sisijemimah.com/wp-content/uploads/2015/09/ofe-nsala.jpg');

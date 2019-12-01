@@ -23,8 +23,8 @@ export class ApiRecipeService {
     return this.http.get<Recipe[]>(this.ALL_RECIPES_URL);
   }
 
-  postRecipe(notebook: Recipe): Observable<Recipe> {
-    return this.http.post<Recipe>(this.SAVE_UPDATE_RECIPE, notebook);
+  postRecipe(recipe: Recipe): Observable<Recipe> {
+    return this.http.post<Recipe>(this.SAVE_UPDATE_RECIPE, recipe);
   }
 
   deleteRecipe(id: number): Observable<any> {
@@ -35,12 +35,12 @@ export class ApiRecipeService {
     return this.http.get<Ingredient[]>(this.ALL_INGREDIENTS_URL);
   }
 
-  getIngredientsByRecipe(notebookId: number): Observable<Ingredient[]> {
-    return this.http.get<Ingredient[]>(this.INGREDIENTS_BY_RECIPE_URL + notebookId);
+  getIngredientsByRecipe(recipeId: number): Observable<Ingredient[]> {
+    return this.http.get<Ingredient[]>(this.INGREDIENTS_BY_RECIPE_URL + recipeId);
   }
 
-  saveIngredient(note: Ingredient): Observable<Ingredient> {
-    return this.http.post<Ingredient>(this.SAVE_UPDATE_INGREDIENT_URL, note);
+  saveIngredient(ingred: Ingredient): Observable<Ingredient> {
+    return this.http.post<Ingredient>(this.SAVE_UPDATE_INGREDIENT_URL, ingred);
   }
 
   deleteIngredient(id: number): Observable<any> {

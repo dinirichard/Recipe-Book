@@ -17,8 +17,11 @@ public class Ingredient {
     @Column
     private Integer amount;
 
-    @ManyToMany(mappedBy="ingredients")
-    private List<Recipe> recipe;
+    @ManyToMany(mappedBy="ingredients", cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+    private List<Recipe> recipes;
+
+    protected Ingredient(){
+    }
 
     public Ingredient(String name, Integer amount) {
         this.name = name;

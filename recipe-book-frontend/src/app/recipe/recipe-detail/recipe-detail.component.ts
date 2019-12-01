@@ -13,6 +13,9 @@ export class RecipeDetailComponent implements OnInit {
 
   @Input() recipeDetail: Recipe;
   @Output() deletedDetail = new EventEmitter<Recipe>();
+  ingredDetail = false;
+  ingredArrowIcon = "";
+  @Output() showDetailIngredient = new EventEmitter<boolean>();
   constructor(private apiService: ApiRecipeService, private router: Router, private location: Location) { }
 
   ngOnInit() {
@@ -22,14 +25,7 @@ export class RecipeDetailComponent implements OnInit {
     if (confirm('Are you sure you want to delete notebook?')) {
       this.apiService.deleteRecipe(recipe.id).subscribe(
         response => {
-          // let indexOfRecipe = this.recipes.indexOf(recipe);
-          // this.recipes.splice(indexOfRecipe, 1);
-
-        //   this.router.navigateByUrl('', { skipLocationChange: true }).then(() => {
-        //     this.router.navigate([this.location.path() ]);
-        // }); 
-
-        this.deletedDetail.emit(recipe);
+          this.deletedDetail.emit(recipe);
 
         },
         error => {
@@ -37,6 +33,11 @@ export class RecipeDetailComponent implements OnInit {
         }
       );
     }
+  }
+
+  toggleIngredient() {
+    this.ingredDetail = !this.ingredDetail;
+    this.showDetailIngredient.emit(this.ingredDetail);
   }
 
 

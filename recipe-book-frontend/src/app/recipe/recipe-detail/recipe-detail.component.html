@@ -2,7 +2,7 @@
     <div class="column">
         <div class="card">
             <div class="card-image">
-                <figure class="image is-5by4">
+                <figure class="image is-4by3">
                     <img [src]="recipeDetail.image" [alt]="recipeDetail.name">
                 </figure>
             </div>
@@ -34,6 +34,9 @@
                                     <hr class="dropdown-divider">
                                     <a class="dropdown-item" (click)="deleteRecipe(recipeDetail)">
                                         Delete Recipe
+                                        <i class="material-icons is-pulled-right">
+                                            delete_forever
+                                        </i>
                                     </a>
                                 </div>
                             </div>
@@ -43,6 +46,12 @@
 
                 <div class="column " style="padding-top: 0px;">
                     <p class="bd-notification is-info"> {{ recipeDetail.description }}</p>
+                </div>
+                <div class="is-italic has-text-right slide-in" (click)="toggleIngredient()" style="padding-top: 0px;">
+                    <a class="">Ingredients
+                        <i class="icon is-small material-icons is-hidden-mobile"> arrow_forward </i>
+                        <i class="icon is-small material-icons is-hidden-tablet"> arrow_downward </i>
+                    </a>
                 </div>
 
             </div>

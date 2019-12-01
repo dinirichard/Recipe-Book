@@ -32,10 +32,10 @@ public class IngredientController {
         return ingredientService.getIngredientById(id);
     }
 
-    @GetMapping("/byRecipe/{ingredientId}")
-    public List<IngredientViewModel> byNotebook(@PathVariable("ingredientId") Integer ingredientId) {
+    @RequestMapping(value = "/byRecipe/{recipeId}", method = RequestMethod.GET)
+    public List<IngredientViewModel> byNotebook(@PathVariable("recipeId") Integer recipeId) {
 
-        return ingredientService.byRecipeId(ingredientId);
+        return ingredientService.byRecipeId(recipeId);
     }
 
     @PostMapping

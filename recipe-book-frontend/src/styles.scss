@@ -1,10 +1,30 @@
 
+@charset "utf-8";
 // @import "../node_modules/bulma/css/bulma.css";
 // @import "../node_modules/bulma/css/bulma.min.css";
 @import "../node_modules/bulma/bulma.sass";
+// @import " "../node_modules/bulma/css/bulma.min.css";
+@import "../node_modules/bulma-calendar/dist/css/bulma-calendar.min.css";
+@import '~bulma-calendar';
+
+// Import component
+// @import "bulmaCalendar.sass";
+// Import Bulma core
+// <link href="../node_modules/bulma-calendar/dist/css/bulma-calendar.min.css" rel="stylesheet">
+
+
 
 
 /* You can add global styles to this file, and also import other style files */
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.slide-in{
+    animation: slide-in 0.6s;
+}
+
+@keyframes slide-in {
+    0% { transform: translateX(-80%);}
+    100% { transform: translateX(-0%);}
+}

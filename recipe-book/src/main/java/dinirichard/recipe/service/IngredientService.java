@@ -47,14 +47,15 @@ public class IngredientService {
         return IngredientViewModel.builder().build();
     }
 
-    public List<IngredientViewModel> byRecipeId(@PathVariable Integer recipeId) {
+    public List<IngredientViewModel> byRecipeId(Integer recipeId) {
 
         List<Ingredient> ingredients = new ArrayList<>();
 
-        Optional<Recipe> notebook = recipeRepository.findById(recipeId);
+        Optional<Recipe> recipe = recipeRepository.findById(recipeId);
 
-        if (notebook.isPresent()) {
-            ingredients = ingredientRepository.findAllByRecipe_Id(notebook.get().getId());
+        if (recipe.isPresent()) {
+            ingredients = recipe.get().getIngredients();
+//            ingredients = ingredientRepository.getIngredientsByRecipesId(recipeId);
         }
 
         // map to note view model
