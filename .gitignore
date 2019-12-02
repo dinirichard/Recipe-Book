@@ -2,6 +2,7 @@
 
 # compiled output
 /recipe-book-frontend/dist
+/recipe-book-frontend/.vscode
 /recipe-book-frontend/tmp
 /recipe-book-frontend/out-tsc
 # Only exists if Bazel was run
@@ -24,7 +25,10 @@ speed-measure-plugin*.json
 *.sublime-workspace
 
 # IDE - VSCode
-.vscode/*
+.vscode/chrome
+.vscode/edge
+*/.vscode/*
+*/vscode/*
 !.vscode/settings.json
 !.vscode/tasks.json
 !.vscode/launch.json

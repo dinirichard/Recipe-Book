@@ -17,11 +17,9 @@ import java.sql.Date;
 public class Mapper {
 
     private RecipeRepository recipeRepository;
-    private ToCookListRepo toCookListRepo;
 
-    public Mapper(RecipeRepository recipeRepository, ToCookListRepo toCookListRepo) {
+    public Mapper(RecipeRepository recipeRepository) {
         this.recipeRepository = recipeRepository;
-        this.toCookListRepo = toCookListRepo;
     }
 
     public IngredientViewModel convertToIngredientViewModel(Ingredient entity) {

@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Recipe } from './models/recipe';
 import { Ingredient } from './models/ingredient';
+import { ToCook } from './models/tocook';
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +17,9 @@ export class ApiRecipeService {
   private SAVE_UPDATE_INGREDIENT_URL = `${this.BASE_URL}\\ingredients`;
   private INGREDIENTS_BY_RECIPE_URL = `${this.BASE_URL}\\ingredients\\byRecipe\\`;
   private DELETE_INGREDIENT_URL = `${this.BASE_URL}\\ingredients\\`;
+  private SAVE_COOK_LIST_URL = `${this.BASE_URL}\\cook-list`;
+  private DELETE_COOK_LIST_URL = `${this.BASE_URL}\\cook-list\\`;
+  private ALL_COOK_LIST_USER_ID_URL = `${this.BASE_URL}\\cook-list\\byUser\\`;
 
   constructor(private http: HttpClient) { }
 
@@ -45,6 +49,18 @@ export class ApiRecipeService {
 
   deleteIngredient(id: number): Observable<any> {
     return this.http.delete(this.DELETE_INGREDIENT_URL + id);
+  }
+
+  getCookingList(userId: number): Observable<ToCook[]> {
+    return this.http.get<ToCook[]>(this.ALL_COOK_LIST_USER_ID_URL + userId);
+  }
+
+  saveCookingList(cookList: ToCook): Observable<ToCook> {
+    return this.http.post<ToCook>(this.SAVE_COOK_LIST_URL, cookList);
+  }
+
+  deleteCookList(id: number): Observable<any> {
+    return this.http.delete(this.DELETE_COOK_LIST_URL + id);
   }
 
 }

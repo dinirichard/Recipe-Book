@@ -1,6 +1,7 @@
 package dinirichard.recipe.controller;
 
 
+import dinirichard.recipe.db.ToCookListRepo;
 import dinirichard.recipe.domain.IngredientViewModel;
 import dinirichard.recipe.domain.ToCookListViewModel;
 import dinirichard.recipe.service.CookListService;
@@ -20,6 +21,9 @@ public class CookListController {
     @Autowired
     private CookListService cookListService;
 
+    @Autowired
+    private ToCookListRepo toCookListRepo;
+
     @PostMapping
     public ToCookListViewModel save(@RequestBody ToCookListViewModel toCookListViewModel, BindingResult bindingResult) {
 
@@ -35,10 +39,14 @@ public class CookListController {
     }
 
     @RequestMapping(value = "/byUser/{userId}", method = RequestMethod.GET)
-    public List<ToCookListViewModel> byNotebook(@PathVariable("userId") Integer userId) {
+    public List<ToCookListViewModel> byUserId(@PathVariable("userId") Integer userId) {
 
         return cookListService.getCookListByUserId(userId);
     }
 
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable Integer id) {
+        this.toCookListRepo.deleteById(id);
+    }
 
 }

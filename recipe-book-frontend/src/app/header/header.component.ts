@@ -9,6 +9,9 @@ import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 export class HeaderComponent implements OnInit {
 
   @Output() optionSelected: EventEmitter<String> = new EventEmitter<String>();
+  @Output() cookListToggle: EventEmitter<boolean> = new EventEmitter<boolean>();
+
+  ckToggle = false;
   onIngre = false;
   onrecipe = true;
   onList = false;
@@ -34,6 +37,13 @@ export class HeaderComponent implements OnInit {
       this.onrecipe = false;
     }
     this.optionSelected.emit(option);
+  }
+
+  cookListClick() {
+    this.ckToggle = !this.ckToggle;
+    this.cookListToggle.emit(this.ckToggle);
+    console.log("Sent IT");
+    console.log(this.ckToggle);
   }
 
 }

@@ -42,7 +42,7 @@ public class CookListService {
 
 //        List<Tocook_list> ingredients = new ArrayList<>();
 
-        List<Tocook_list> recipes = toCookListRepo.getTocook_listByUser_id(userId);
+        List<Tocook_list> recipes = toCookListRepo.getToCook_listByUser_id(userId);
 
 //        if (recipe.isPresent()) {
 //            ingredients = toCookListRepo.getTocook_listByUser_id(userId);
