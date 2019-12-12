@@ -27,7 +27,7 @@ services:
       - backend
 
   springapi:
-    image: openjdk:11-jre-slim
+    image: openjdk:11-jdk-slim
     container_name: springapi
     ports:
       - 8085:8085
